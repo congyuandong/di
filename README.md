@@ -1,4 +1,4 @@
-# @opensumi/di
+# @opensumi/di11
 
 [![CI](https://github.com/opensumi/di/actions/workflows/ci.yml/badge.svg)](https://github.com/opensumi/di/actions/workflows/ci.yml) [![NPM Version][npm-image]][npm-url] [![NPM downloads][download-image]][download-url] [![Test Coverage][test-image]][test-url] [![License][license-image]][license-url]
 
