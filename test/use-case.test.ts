@@ -189,23 +189,6 @@ describe(__filename, () => {
     expect(a).not.toBe(b);
   });
 
-  it('提供了 asSingleton 来实现工厂模式的单例', () => {
-    const token = 'Token';
-
-    @Injectable()
-    class A {}
-
-    const provider = {
-      token,
-      useFactory: asSingleton(() => new A()),
-    };
-
-    const injector = new Injector([provider]);
-    const a = injector.get(token);
-    const b = injector.get(token);
-    expect(a).toBe(b);
-  });
-
   it('使用抽象函数作为 Token', () => {
     abstract class Logger {
       abstract log(msg: string): void;

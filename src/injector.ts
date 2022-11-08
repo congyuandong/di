@@ -18,6 +18,8 @@ import {
   IValidAspectHook,
   Context,
   ParameterOpts,
+  FactoryCreator,
+  AS_SINGLETON_SYMBOL,
 } from './declare';
 import {
   isClassCreator,
@@ -194,8 +196,15 @@ export class Injector {
 
   hasInstance(instance: any) {
     for (const creator of this.creatorMap.values()) {
-      if (creator.instance === instance) {
+      if (creator && creator.instance === instance) {
         return true;
+      }
+      if ((creator as FactoryCreator).useFactory) {
+        if ((creator as FactoryCreator).useFactory[AS_SINGLETON_SYMBOL]) {
+          if ((creator as FactoryCreator).useFactory(this) === instance) {
+            return true;
+          }
+        }
       }
     }
 

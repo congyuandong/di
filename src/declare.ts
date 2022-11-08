@@ -52,8 +52,11 @@ export interface AliasProvider extends BasicProvider {
   useAlias: Token;
 }
 
+export const AS_SINGLETON_SYMBOL = Symbol('AS_SINGLETON_SYMBOL');
+
 export interface FactoryFunction<T = any> {
   (injector: Injector): T;
+  [AS_SINGLETON_SYMBOL]?: boolean;
 }
 
 export interface FactoryProvider<T = any> extends BasicProvider {
